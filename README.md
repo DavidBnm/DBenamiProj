@@ -1,10 +1,3 @@
-מדהים! אני רואה בתמונה `image_9f208a.png` שהכל עלה לחשבון ה-GitHub שלך בצורה מושלמת, כולל התיקייה החדשה של `cv_tailor`. הריפו נראה נקי ומקצועי מאוד.
-
-כדי לסגור את זה כמו שצריך ולהרשים מנהלים מגייסים שמגיעים לפרופיל שלך, בניתי לך קובץ `README.md` רשמי, ברמה גבוהה ובאנגלית בלבד (כדי שיתאים לסטנדרט של התעשייה). הוא מציג אותך כמהנדס דאטה רציני ומפרט יפה את הפרויקטים ומטלות הבית שהעלית.
-
-הנה התוכן של הקובץ. אתה יכול פשוט ללחוץ על הכפתור הירוק **Add a README** ישירות בתוך ממשק ה-GitHub שבתמונה, להדביק את הטקסט הבא, ולשמור:
-
-```markdown
 # Data Engineering & Autonomous Agents Portfolio
 
 Welcome to my centralized Data Engineering portfolio repository. This repository showcases a collection of production-grade data pipelines, professional take-home engineering assignments, and custom AI agent automation tools developed to optimize modern data workflows.
