@@ -1,0 +1,96 @@
+## Architectural Design for Wix Comparison Chart Event Tracking
+
+### 1. Business Context
+Wix has introduced a **comparison chart** feature to help users compare different products and plans. To optimize conversion rates, the marketing team needs robust event tracking data to analyze user behavior. This includes:
+- Tracking page views of the comparison chart
+- Tracking clicks on affiliate links
+- Handling high traffic volumes while ensuring data privacy
+- Providing accessible and insightful analytics for business users
+
+---
+
+### 2. Data Architecture Overview
+
+#### **2.1 Data Collection & Storage**
+##### **Event Data (High-Volume, Real-Time) → Stored in BigQuery**
+**Why BigQuery?**
+- **Scalability**: Can handle millions of events per hour with minimal operational overhead.
+- **Cost-Effectiveness**: Pay-as-you-go model ensures efficient pricing.
+- **Query Performance**: Optimized for analytical queries, making it ideal for ad-hoc analysis.
+- **Integration**: Easily connects with Google Cloud services and BI tools.
+
+##### **Metadata (Users, Links, Products, Teams, etc.) → Stored in a SQL Database (e.g., PostgreSQL/MySQL)**
+**Why SQL?**
+- **Transactional Consistency**: ACID compliance ensures reliability for structured data.
+- **Frequent Updates**: Supports CRUD operations for user profiles and product details.
+- **Relational Integrity**: Ideal for structured relationships and complex joins.
+
+---
+
+### 3. Data Processing & Enrichment
+
+#### **3.1 Raw Event Data Transformation**
+##### **Apache Airflow Pipeline**
+- Ingests raw event data from **BigQuery**.
+- Applies business logic (e.g., **user segmentation, data deduplication, enrichment** with metadata).
+- Transforms and stores cleaned data into:
+  - **Optimized BigQuery tables** for analytical queries.
+  - **SQL database tables** for relational joins and operational reporting.
+
+##### **3.2 Real-Time Processing for Quick Insights**
+- **Google Cloud Pub/Sub + Dataflow** for **real-time streaming** data processing.
+- Immediate aggregation of key metrics and storage into **BigQuery**.
+
+##### **3.3 Batch Processing for Historical Analysis**
+- **Cloud Composer (Airflow) Pipelines** scheduled to process and enrich data periodically.
+- Ensures historical data remains **clean and structured**.
+
+---
+
+### 4. Data Accessibility & Reporting
+
+#### **4.1 Business Analyst Access via Metabase**
+**Why Metabase?**
+- **User-Friendly**: No SQL expertise required.
+- **Scheduled Reporting**: Automate reports for specific analyst groups.
+- **Role-Based Access**: Ensures data governance and security.
+
+#### **4.2 Ad-Hoc & Scheduled Reports**
+- Business analysts can explore **real-time and historical data** through Metabase dashboards.
+- Reports are **scheduled and delivered** via email/Slack.
+
+---
+
+### 5. Monitoring & Alerting
+
+- **Google Cloud Monitoring** for real-time pipeline health checks.
+- **Prometheus + Grafana** for tracking **query performance** and system metrics.
+- **Airflow Alerts** to detect **failures in data transformation pipelines**.
+
+---
+
+### 6. Implementation Considerations
+
+#### **6.1 Development Approach & Timeline**
+| Phase | Task | Estimated Time |
+|---|---|---|
+| **Phase 1** | Set up event tracking and BigQuery ingestion | 2 weeks |
+| **Phase 2** | Develop Airflow pipelines for transformation | 3 weeks |
+| **Phase 3** | Configure Metabase for analytics | 2 weeks |
+| **Phase 4** | Implement monitoring & alerting | 1 week |
+| **Phase 5** | Testing and deployment | 2 weeks |
+
+#### **6.2 Testing Strategy**
+- **Unit Tests** for Airflow DAGs (ensure correct transformations).
+- **Data Quality Checks** (validate expected row counts and consistency in BigQuery and SQL DB).
+- **Load Testing** (simulate high event loads to ensure system stability).
+
+#### **6.3 Deployment & Operations**
+- **CI/CD Pipelines** (Terraform + GitHub Actions) for **infrastructure as code**.
+- **Incremental Deployment Strategy** (phased rollout to minimize risks).
+- **Ongoing Performance Tuning** (optimize queries and storage).
+
+---
+
+### 7. Conclusion
+This architecture ensures **scalable, cost-efficient, and user-friendly data tracking** for Wix’s comparison chart. The combination of **BigQuery for event data, SQL databases for metadata, Airflow pipelines for transformation, and Metabase for analysis** provides a robust and future-proof solution.

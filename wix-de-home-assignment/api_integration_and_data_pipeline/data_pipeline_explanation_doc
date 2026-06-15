@@ -1,0 +1,72 @@
+# Data Pipeline Documentation
+
+## 1. Data Pipeline Architecture
+The data pipeline consists of the following stages:
+
+1. **Stock Data Retrieval**:
+   - Fetches stock data for a given ticker and date from the Polygon API.
+   - Extracts trading prices (open, high, low, close, after-hours, and pre-market).
+
+2. **Currency Exchange Rate Retrieval**:
+   - Identifies the base currency of the stock.
+   - Fetches exchange rates for the given date from the Frankfurter API.
+   - Supports conversion to multiple currencies.
+
+3. **Data Transformation & Integration**:
+   - Transforms stock data into a long format.
+   - Merges stock prices with exchange rates.
+   - Computes stock prices in different currencies.
+
+4. **Report Generation**:
+   - Creates a CSV report with converted stock prices.
+   - Saves the report to a local directory or cloud storage.
+
+## 2. Data Modeling Approach
+- **Stock Data Table**: Stores trading prices for a given ticker and date.
+- **Currency Exchange Table**: Contains exchange rates for different currencies.
+- **Stock Currency Report**: A final table combining stock prices with exchange rates, structured as:
+  
+  | Date       | Ticker | Price Type | Ticker Currency | Price | Currency | Exchange Rate | Currency Price |
+  |------------|--------|------------|----------------|-------|----------|---------------|---------------|
+  | 2024-10-03 | AAPL   | Open       | USD            | 150.0 | EUR      | 0.85          | 127.5         |
+
+## 3. Currency-Converted Stock Analysis
+- Converts stock prices from the base currency to multiple currencies.
+- Allows users to analyze stock price movements in different economic contexts.
+- Enables international investors to compare stock performance in their preferred currencies.
+
+## 4. Configuring the Pipeline for Different Stocks or Currencies
+- **Stock Selection**: Change the `-t` argument to fetch data for a different ticker.
+- **Date Selection**: Use the `-d` argument to specify a different date.
+- **Currency Conversion**: Define the `-s` argument with a list of currency symbols (e.g., `EUR GBP`). If omitted, converts to all available currencies.
+
+## 5. Handling Potential Issues
+### API Failures:
+- Implements error handling and logging for API requests.
+- Retries failed requests with exponential backoff.
+-If you get a 403 Forbidden or an "unauthorized" error, your API key may lack permissions.
+You might need to upgrade your plan or generate a new auth key. When you do, store it in a .env file and load it into your code securely.
+
+### Missing Data:
+- Checks for missing stock prices and exchange rates.
+- Logs warnings and excludes incomplete records from the report.
+
+### Rate Limiting:
+- Uses API keys stored in `.env` to manage request limits.
+- Implements request throttling to avoid exceeding limits.
+
+## 6. Scheduling and Monitoring in Production
+### Scheduling:
+- Use **Apache Airflow** or **Cron Jobs** to automate daily execution.
+- Example cron job for daily execution at 8 AM:
+  ```
+  0 8 * * * python stock_pipeline.py -t AAPL -d $(date +"%Y-%m-%d")
+  ```
+
+### Monitoring:
+- **Logging**: Captures errors, warnings, and processing details.
+- **Alerting**: Sends email or Slack notifications for failures.
+- **Dashboarding**: Uses tools like Grafana or Datadog to visualize stock trends.
+
+By following this documentation, the pipeline can be effectively configured, monitored, and scaled for different stocks and currencies.
+

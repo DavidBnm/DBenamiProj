@@ -1,0 +1,11 @@
+{
+  "api_sports": {
+    "key": "eb4ffc6ac1ff9cdb319a55546854ef6b",
+    "season": 2024,
+    "league_id": 39
+  },
+  "api_football": {
+    "key": "15d3c9651b53d6030c59d2168413b502ef59b4a92280c0541826050c85b73d70",
+    "league_id": 152
+  }
+}

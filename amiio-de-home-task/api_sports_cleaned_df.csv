@@ -1,0 +1,21 @@
+team_id,team_name,founded_year,stadium_name,city,season,table_position,points,games_played,wins,draws,losses,goals_for,goals_against,ingested_at
+40,Liverpool,1892,Anfield,Liverpool,2024,1,84,38,25,9,4,86,41,2026-06-13 12:17:00
+42,Arsenal,1886,Emirates Stadium,London,2024,2,74,38,20,14,4,69,34,2026-06-13 12:17:00
+50,Manchester City,1880,Etihad Stadium,Manchester,2024,3,71,38,21,8,9,72,44,2026-06-13 12:17:00
+49,Chelsea,1905,Stamford Bridge,London,2024,4,69,38,20,9,9,64,43,2026-06-13 12:17:00
+34,Newcastle United,1892,St. James' Park,Newcastle upon Tyne,2024,5,66,38,20,6,12,68,47,2026-06-13 12:17:00
+66,Aston Villa,1874,Villa Park,Birmingham,2024,6,66,38,19,9,10,58,51,2026-06-13 12:17:00
+65,Nottingham Forest,1865,The City Ground,"Nottingham, Nottinghamshire",2024,7,65,38,19,8,11,58,46,2026-06-13 12:17:00
+51,Brighton,1901,American Express Stadium,"Falmer, East Sussex",2024,8,61,38,16,13,9,66,59,2026-06-13 12:17:00
+35,Bournemouth,1899,Vitality Stadium,"Bournemouth, Dorset",2024,9,56,38,15,11,12,58,46,2026-06-13 12:17:00
+55,Brentford,1889,Gtech Community Stadium,"Brentford, Middlesex",2024,10,56,38,16,8,14,66,57,2026-06-13 12:17:00
+36,Fulham,1879,Craven Cottage,London,2024,11,54,38,15,9,14,54,54,2026-06-13 12:17:00
+52,Crystal Palace,1861,Selhurst Park,London,2024,12,53,38,13,14,11,51,51,2026-06-13 12:17:00
+45,Everton,1878,Hill Dickinson Stadium,"Liverpool, Merseyside",2024,13,48,38,11,15,12,42,44,2026-06-13 12:17:00
+48,West Ham United,1895,London Stadium,London,2024,14,43,38,11,10,17,46,62,2026-06-13 12:17:00
+33,Manchester United,1878,Old Trafford,Manchester,2024,15,42,38,11,9,18,44,54,2026-06-13 12:17:00
+39,Wolves,1877,Molineux Stadium,"Wolverhampton, West Midlands",2024,16,42,38,12,6,20,54,69,2026-06-13 12:17:00
+47,Tottenham Hotspur,1882,Tottenham Hotspur Stadium,London,2024,17,38,38,11,5,22,64,65,2026-06-13 12:17:00
+46,Leicester,1884,King Power Stadium,"Leicester, Leicestershire",2024,18,25,38,6,7,25,33,80,2026-06-13 12:17:00
+57,Ipswich,1878,Portman Road,"Ipswich, Suffolk",2024,19,22,38,4,10,24,36,82,2026-06-13 12:17:00
+41,Southampton,1885,St. Mary's Stadium,"Southampton, Hampshire",2024,20,12,38,2,6,30,26,86,2026-06-13 12:17:00

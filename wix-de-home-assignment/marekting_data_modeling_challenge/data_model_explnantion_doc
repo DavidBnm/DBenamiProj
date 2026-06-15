@@ -1,0 +1,43 @@
+# Data Modeling and Structure Explanation
+
+## 1. Rationale Behind Your Modeling Decisions
+I chose a dimensional model to separate descriptive (static) data from transactional (dynamic) data, making it easier to analyze and report at different levels of aggregation. The hierarchy reflects how ad data is structured in real life, starting from the lowest (Ad) up to the highest level (Account).
+
+### Separation of Concerns
+Dimension tables contain static information, while the Ads fact table holds transactional metrics, supporting flexible reporting and scalability.
+
+## 2. How Your Model Addresses the Business Requirements
+### Flexibility
+The model supports high-frequency updates (hourly/daily) and can scale across different platforms. It allows querying at various levels (Ad, Campaign, Portfolio) to meet business reporting needs.
+
+### Aggregated Insights
+By separating data into dimensions and facts, it allows easy aggregation and drill-down into metrics like clicks, impressions, and cost at different levels (e.g., Campaign, Account).
+
+## 3. Trade-offs Considered and Why You Chose Your Approach
+### Normalization vs. Denormalization
+I chose normalization for data integrity and reduced redundancy, despite the slightly higher complexity in queries. This decision ensures scalability and flexibility in handling evolving business requirements.
+
+### Historical Data vs. Real-Time Data
+The model focuses on historical data at the ad level but does not capture real-time metrics. Aggregations across different levels compensate for this by providing trend-based insights.
+
+## 4. How Your Model Handles Data Quality Issues
+### Null Handling
+Fields like 'click_date' and 'view_date' allow nulls, which can be filtered out or handled in queries (e.g., using 'COALESCE' or ignoring nulls in aggregates).
+
+### Consistency
+Foreign keys ensure referential integrity, preventing orphaned records. Data validation rules can be implemented during data loading to maintain quality (e.g., ensuring non-negative clicks or impressions).
+
+## 5. Recommendations for Indexing Strategy to Optimize Query Performance
+### Foreign Key Indexing
+Index foreign key columns ('ad_group_id', 'campaign_id', etc.) for efficient joins.
+
+### Composite Index
+Create composite indexes on frequently queried combinations (e.g., ('ad_id', 'ad_group_id', 'campaign_id')) for faster filtering and aggregation.
+
+### Indexing Date Fields
+Index 'click_date' and 'view_date' to speed up date-based queries.
+
+### Partitioning
+Partition the Ads table by date (e.g., monthly) to improve query performance as the data grows.
+
+This approach balances performance, scalability, and business requirements, ensuring efficient reporting and handling of large datasets.
