@@ -1,0 +1,18 @@
+Company: Playtika
+Position: Data Engineer & Analytics Engineer
+Location: Herzliya, Israel
+
+We are looking for a Data Engineer & Analytics Engineer to build robust data pipelines and model analytic datasets.
+
+Responsibilities:
+- Build modular data transformation pipelines using dbt.
+- Write robust, clean ETL logic in Python (Pandas) and SQL.
+- Orchestrate job runs and schedule workflows with Apache Airflow.
+- Structure data models in Google BigQuery to support BI reporting.
+
+Requirements:
+- 3+ years of professional experience in Data Engineering or BI Development.
+- Expert-level SQL and strong programming skills in Python.
+- Hands-on experience with dbt and Apache Airflow.
+- Experience containerizing apps with Docker.
+- Experience with Google BigQuery or Snowflake is a major plus.
